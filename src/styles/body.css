@@ -1,0 +1,49 @@
+.body {
+    background-color: var(--base-1);
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 5vw 90vw 5vw; /* Adjust the number and size of columns as needed */
+    grid-template-rows: 5vw calc(100vh - 10vw) 5vw; /* Adjust the number and size of columns as needed */
+    grid-gap: 0vw; /* Adjust the gap between grid items */
+}
+
+.top-section {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.bottom-section {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.mid-section {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: repeat(10, 10%); /* Adjust the number and size of columns as needed */
+    grid-template-rows: repeat(10, 10%); /* Adjust the number and size of columns as needed */
+    grid-gap: 0; /* Adjust the gap between grid items */
+}
+
+.left-section {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.right-section {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
