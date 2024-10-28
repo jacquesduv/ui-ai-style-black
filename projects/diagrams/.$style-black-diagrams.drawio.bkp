@@ -1,0 +1,170 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
+    <mxGraphModel dx="1687" dy="984" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-51" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="20" y="140" width="150" height="1461" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-52" value="Frontend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="268" y="140" width="150" height="1461" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-53" value="MapDisplay" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="575" y="140" width="150" height="1461" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-54" value="Backend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="775" y="140" width="150" height="1461" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-55" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="1014" y="140" width="150" height="1461" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-56" value="Add Block" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-51" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="228" y="296" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-57" value="Update block state in memory" style="curved=1;endArrow=block;rounded=0;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="394" y="348" />
+              <mxPoint x="394" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-58" value="Update map display" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-53">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-59" value="Edit Block Target Rate" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-51" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="228" y="531" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-60" value="Update block state in memory" style="curved=1;endArrow=block;rounded=0;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="394" y="583" />
+              <mxPoint x="394" y="613" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-61" value="Update map display" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-53">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="665" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-62" value="Delete Block" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-51" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="228" y="766" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-63" value="Remove block from state in memory" style="curved=1;endArrow=block;rounded=0;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="394" y="818" />
+              <mxPoint x="394" y="848" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-64" value="Update map display" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-53">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-65" value="Save Changes" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-51" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="228" y="1001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-66" value="POST /blocks (block data)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-54">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="1053" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-67" value="Save/Update block data" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-54" target="AFhnbMR8t5DdtihxeGUJ-55">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="978" y="1105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-68" value="Confirmation" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-55" target="AFhnbMR8t5DdtihxeGUJ-54">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="981" y="1157" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-69" value="Response (Success)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-54" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="608" y="1209" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-70" value="Update map display (if necessary)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-53">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505" y="1261" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-71" value="Generate Part File" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-51" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="228" y="1362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-72" value="Convert data (coordinates to hex)" style="curved=1;endArrow=block;rounded=0;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-52">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="394" y="1414" />
+              <mxPoint x="394" y="1444" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-73" value="Provide file for download" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="AFhnbMR8t5DdtihxeGUJ-52" target="AFhnbMR8t5DdtihxeGUJ-51">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="231" y="1496" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-74" value="Adding a Block (In Memory)" style="fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="70" y="215" width="298" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-75" value="Editing a Block&#39;s Target Rate (In Memory)" style="fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="70" y="450" width="298" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-76" value="Deleting a Block (In Memory)" style="fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="70" y="685" width="298" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-77" value="User Saves Changes" style="fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="70" y="920" width="298" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="AFhnbMR8t5DdtihxeGUJ-78" value="Generating Part File (Client-side)" style="fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1281" width="298" height="49" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
