@@ -1,5 +1,3 @@
-'use strict';
-
 var jsxRuntime = {exports: {}};
 
 var reactJsxRuntime_production_min = {};
@@ -4185,5 +4183,5 @@ const Button = ({ label }) => {
     return jsxRuntimeExports.jsx("button", { className: "button", children: label });
 };
 
-exports.Button = Button;
-//# sourceMappingURL=index.js.map
+export { Button };
+//# sourceMappingURL=index.esm.js.map
