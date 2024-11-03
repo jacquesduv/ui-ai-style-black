@@ -1,26 +1,31 @@
 // src/App.js
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
-import MapDisplay from "./components/MapDisplay";
+import MapEditor from "./components/MapEditor";
+import HelpPage from "./components/HelpPage";
+import { BlockProvider } from "./context/BlockContext";
 
 const App = () => {
-  // Sample block data
-  const [blocks, setBlocks] = useState([
-    { lat: -27.945563, lng: 25.661019, targetRate: 3000 },
-    { lat: -27.945293, lng: 25.66132, targetRate: 3200 },
-  ]);
-
-  // Function to add a new block
-  const onAddBlock = (newBlock) => {
-    setBlocks((prevBlocks) => [...prevBlocks, newBlock]);
-  };
-
   return (
-    <div>
-      <NavbarComponent />
-      <h1 className="text-center mt-4">Welcome to the Part File Editor</h1>
-      <MapDisplay blocks={blocks} onAddBlock={onAddBlock} />
-    </div>
+    <BlockProvider>
+      <Router>
+        <NavbarComponent />
+        <Routes>
+          <Route path="/" element={<MapEditor />} />
+          <Route path="/help" element={<HelpPage />} />
+          <Route
+            path="/settings"
+            element={
+              <div className="container mt-4">
+                <h2>Settings Page</h2>
+                <p>Settings content coming soon!</p>
+              </div>
+            }
+          />
+        </Routes>
+      </Router>
+    </BlockProvider>
   );
 };
 
