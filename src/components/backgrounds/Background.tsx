@@ -1,10 +1,10 @@
 import React from 'react';
-import './Button.css';
+import './Background.css';
 
-interface ButtonProps {
+interface BackgroundProps {
   children: [];
 }
 
-export const Button: React.FC<ButtonProps> = ({ children }) => {
+export const Background: React.FC<BackgroundProps> = ({ children }) => {
   return <div className="background">{children}</div>;
 };

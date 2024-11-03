@@ -4181,9 +4181,14 @@ var jsxRuntimeExports = requireJsxRuntime();
 
 requireReact();
 
-const Button = ({ label }) => {
-    return jsxRuntimeExports.jsx("button", { className: "button", children: label });
+const Button = ({ label, onClick, className }) => {
+    return jsxRuntimeExports.jsx("button", { className: `ai-button ${className}`, onClick: onClick, children: label });
 };
 
+const Background = ({ children }) => {
+    return jsxRuntimeExports.jsx("div", { className: "background", children: children });
+};
+
+exports.Background = Background;
 exports.Button = Button;
 //# sourceMappingURL=index.js.map

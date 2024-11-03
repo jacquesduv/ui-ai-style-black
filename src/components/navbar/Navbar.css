@@ -1,0 +1,36 @@
+:root {
+  --ai-navbar-height: 3.5vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Navbar                                                                                    */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-navbar {
+  background-color: var(--base-b-1);
+  width: 100%;
+  height: var(--ai-navbar-height);
+  
+}
+
+.ai-navbar-logo-img {
+  height:100%;
+  float:left;
+  opacity:0.9;
+}
+
+.ai-navbar-logo-title-primary {
+  color:#ddd !important;
+  font-size: calc(var(--ai-navbar-height)*0.8);
+  font-family:Arial Black; 
+  line-height:100%;
+}
+
+.ai-navbar-logo-title-secondary {
+  color:#ddd !important;
+  font-size: calc(var(--ai-navbar-height)*0.2);
+  font-family:Arial; 
+  line-height:100%; 
+  position:relative; 
+  top:calc(var(--ai-navbar-height)*-0.2);
+}

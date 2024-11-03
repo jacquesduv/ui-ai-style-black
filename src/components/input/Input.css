@@ -1,8 +1,54 @@
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Input                                                                                     */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-input-dollar {
+  position: relative;
+  float: left;
+  color: #ffffff;
+  background-color: #ffffff05;
+  border: solid #ffffff00 0px;
+  width: 3%;
+  height: 20px;
+}
+
+.ai-input-console {
+  position: relative;
+  color: #ffffff;
+  background-color: #ffffff05;
+  border: solid #ffffff00 0px;
+  width: 97%;
+  height: 1.48vw;
+  float: left;
+}
+
+/* .ai-input {
+  position: relative;
+  color: #ffffff;
+  background-color: #ffffff05;
+  border: solid #ffffff00 0px;
+  width: 97%;
+  height: 1.48vw;
+  float: left;
+} */
+
+
+.ai-input:-webkit-autofill,
+.ai-input:-webkit-autofill:hover, 
+.ai-input:-webkit-autofill:focus {
+border: solid #ffffff00 0px;
+-webkit-text-fill-color: #ffffff;
+-webkit-box-shadow: 0 0 0px 1000px #44444422 inset;
+transition: background-color 5000s ease-in-out 0s;
+}
+
 /*////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*//    Buttons                                                                                   */
 /*////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.ai-button {
+.ai-input {
   border: solid 0.1vw;
   height: calc(100% - 0.6vw);
   font-family: oxanium;
@@ -13,15 +59,15 @@
   padding: 0vw;
 }
 
-.ai-button-bottom {
+.ai-input-bottom {
   border-bottom: solid 0.4vw var(--base-b-6);
 }
 
-.ai-button-top {
+.ai-input-top {
   border-top: solid 0.4vw var(--base-b-6);
 }
 
-.ai-button-connect {
+.ai-input-connect {
   border: solid 0.1vw var(--base-b-6);
   height: 1.6vw;
   font-size: 1vw;
@@ -32,7 +78,7 @@
   padding: 0vw 0vw 0vw 0vw;
 }
 
-.ai-button-data {
+.ai-input-data {
   border: solid 0.1vw var(--base-b-6);
   height: 2.4vw;
   font-size: 1vw;
@@ -43,61 +89,61 @@
   padding: 0vw 0vw 0vw 0vw;
 }
 
-.ai-button-base {
+.ai-input-base {
   background-color: var(--base-dark);
   border-color: var(--base-bright);
   color: var(--base-bright);
 }
 
-.ai-button-blue {
+.ai-input-blue {
   background-color: var(--blue-dark-dim);
   border-color: var(--blue-light-dim);
   color: var(--blue-bright-dim);
 }
 
-.ai-button-aqua {
+.ai-input-aqua {
   background-color: var(--aqua-dark-dim);
   border-color: var(--aqua-light-dim);
   color: var(--aqua-bright-dim);
 }
 
-.ai-button-aqua {
+.ai-input-aqua {
   background-color: var(--aqua-dark-dim);
   border-color: var(--aqua-light-dim);
   color: var(--aqua-bright-dim);
 }
 
-.ai-button-green {
+.ai-input-green {
   background-color: var(--green-dark-dim);
   border-color: var(--green-light-dim);
   color: var(--green-bright-dim);
 }
 
-.ai-button-yellow {
+.ai-input-yellow {
   background-color: var(--yellow-dark-dim);
   border-color: var(--yellow-light-dim);
   color: var(--yellow-bright-dim);
 }
 
-.ai-button-orange {
+.ai-input-orange {
   background-color: var(--orange-dark-dim);
   border-color: var(--orange-light-dim);
   color: var(--orange-bright-dim);
 }
 
-.ai-button-red {
+.ai-input-red {
   background-color: var(--red-dark-dim);
   border-color: var(--red-light-dim);
   color: var(--red-bright-dim);
 }
 
-.ai-button-pink {
+.ai-input-pink {
   background-color: var(--pink-dark-dim);
   border-color: var(--pink-light-dim);
   color: var(--pink-bright-dim);
 }
 
-.ai-button-purple {
+.ai-input-purple {
   background-color: var(--purple-dark-dim);
   border-color: var(--purple-light-dim);
   color: var(--purple-bright-dim);

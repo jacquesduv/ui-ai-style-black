@@ -1,10 +1,728 @@
-.background {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 120px;
-  }
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//                                                                                              */
+/*//    TITLE:  AI - CSS Stylesheet                                                               */
+/*//                                                                                              */
+/*//    AUTHOR: Jacques Duvenage                                                                  */
+/*//                                                                                              */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//                                                                                              */
+/*//    NOTES:                                                                                    */
+/*//                                                                                              */
+/*//        --                                                                                    */
+/*//                                                                                              */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//                                                                                              */
+/*//    Getting Started                                                                           */
+/*//                                                                                              */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//                                                                                              */
+/*//    Layout                                                                                    */
+/*//                                                                                              */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+:root {
+  --normal-s:75%;
+  --dim-s:40%;
+  --normal-l:50%;
+  --bright-l:70%;
+  --dark-l:20%;
+
+  --blue-h:230;
+  --blue-light:hsl(var(--blue-h),var(--normal-s),var(--normal-l));
+  --blue-light-dim:hsl(var(--blue-h),var(--dim-s),var(--normal-l));
+  --blue-bright:hsl(var(--blue-h),var(--normal-s),var(--bright-l));
+  --blue-bright-dim:hsl(var(--blue-h),var(--dim-s),var(--bright-l));
+  --blue-dark:hsl(var(--blue-h),var(--normal-s),var(--dark-l));
+  --blue-dark-dim:hsl(var(--blue-h),var(--dim-s),var(--dark-l));
   
+  --purple-h:280;
+  --purple-light:hsl(var(--purple-h),var(--normal-s),var(--normal-l));
+  --purple-light-dim:hsl(var(--purple-h),var(--dim-s),var(--normal-l));
+  --purple-bright:hsl(var(--purple-h),var(--normal-s),var(--bright-l));
+  --purple-bright-dim:hsl(var(--purple-h),var(--dim-s),var(--bright-l));
+  --purple-dark:hsl(var(--purple-h),var(--normal-s),var(--dark-l));
+  --purple-dark-dim:hsl(var(--purple-h),var(--dim-s),var(--dark-l));
+  
+  --pink-h:310;
+  --pink-light:hsl(var(--pink-h),var(--normal-s),var(--normal-l));
+  --pink-light-dim:hsl(var(--pink-h),var(--dim-s),var(--normal-l));
+  --pink-bright:hsl(var(--pink-h),var(--normal-s),var(--bright-l));
+  --pink-bright-dim:hsl(var(--pink-h),var(--dim-s),var(--bright-l));
+  --pink-dark:hsl(var(--pink-h),var(--normal-s),var(--dark-l));
+  --pink-dark-dim:hsl(var(--pink-h),var(--dim-s),var(--dark-l));
+  
+  --red-h:0;
+  --red-light:hsl(var(--red-h),var(--normal-s),var(--normal-l));
+  --red-light-dim:hsl(var(--red-h),var(--dim-s),var(--normal-l));
+  --red-bright:hsl(var(--red-h),var(--normal-s),var(--bright-l));
+  --red-bright-dim:hsl(var(--red-h),var(--dim-s),var(--bright-l));
+  --red-dark:hsl(var(--red-h),var(--normal-s),var(--dark-l));
+  --red-dark-dim:hsl(var(--red-h),var(--dim-s),var(--dark-l));
+  
+  --orange-h:37;
+  --orange-light:hsl(var(--orange-h),var(--normal-s),var(--normal-l));
+  --orange-light-dim:hsl(var(--orange-h),var(--dim-s),var(--normal-l));
+  --orange-bright:hsl(var(--orange-h),var(--normal-s),var(--bright-l));
+  --orange-bright-dim:hsl(var(--orange-h),var(--dim-s),var(--bright-l));
+  --orange-dark:hsl(var(--orange-h),var(--normal-s),var(--dark-l));
+  --orange-dark-dim:hsl(var(--orange-h),var(--dim-s),var(--dark-l));
+  
+  --yellow-h:60;
+  --yellow-light:hsl(var(--yellow-h),var(--normal-s),var(--normal-l));
+  --yellow-light-dim:hsl(var(--yellow-h),var(--dim-s),var(--normal-l));
+  --yellow-bright:hsl(var(--yellow-h),var(--normal-s),var(--bright-l));
+  --yellow-bright-dim:hsl(var(--yellow-h),var(--dim-s),var(--bright-l));
+  --yellow-dark:hsl(var(--yellow-h),var(--normal-s),var(--dark-l));
+  --yellow-dark-dim:hsl(var(--yellow-h),var(--dim-s),var(--dark-l));
+  
+  --green-h:110;
+  --green-light:hsl(var(--green-h),var(--normal-s),var(--normal-l));
+  --green-light-dim:hsl(var(--green-h),var(--dim-s),var(--normal-l));
+  --green-bright:hsl(var(--green-h),var(--normal-s),var(--bright-l));
+  --green-bright-dim:hsl(var(--green-h),var(--dim-s),var(--bright-l));
+  --green-dark:hsl(var(--green-h),var(--normal-s),var(--dark-l));
+  --green-dark-dim:hsl(var(--green-h),var(--dim-s),var(--dark-l));
+  
+  --aqua-h:170;
+  --aqua-light:hsl(var(--aqua-h),var(--normal-s),var(--normal-l));
+  --aqua-light-dim:hsl(var(--aqua-h),var(--dim-s),var(--normal-l));
+  --aqua-bright:hsl(var(--aqua-h),var(--normal-s),var(--bright-l));
+  --aqua-bright-dim:hsl(var(--aqua-h),var(--dim-s),var(--bright-l));
+  --aqua-dark:hsl(var(--aqua-h),var(--normal-s),var(--dark-l));
+  --aqua-dark-dim:hsl(var(--aqua-h),var(--dim-s),var(--dark-l));
+
+  --grey-light:#444444;
+  --grey-light-dim:#444444;
+  --grey-bright:#757575;
+  --grey-bright-dim:#757575;
+  --grey-dark: #222;
+  --grey-dark-dim: #111;
+
+  --base-b-0: #000508;
+  --base-b-1: #000d14;
+  --base-b-2: #00121c;
+  --base-b-3: #001926;
+  --base-dark: #002233;
+  --base-b-4: #00293d;
+  --base-light: #003752;
+  --base-b-6: #004363;
+  --base-b-7: #00537a;
+  --base-b-8: #005f8c;
+  --base-bright: #4582a0;
+  --base-b-9: #5198bc;
+  
+  --ai-navbar-height: 3.5vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Visibility                                                                                */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.hidden {
+  visibility: hidden;
+  position: absolute;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Grid                                                                                      */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.dx-1 {
+  width: 10.25vw;
+}
+
+.dx-2 {
+  width: 21.5vw;
+}
+
+.dx-3 {
+  width: 32.75vw;
+}
+
+.dx-4 {
+  width: 44vw;
+}
+
+.dx-5 {
+  width: 55.25vw;
+}
+
+.dx-6 {
+  width: 66.50vw;
+}
+
+.dx-7 {
+  width: 77.75vw;
+}
+
+.dx-8 {
+  width: 89vw;
+}
+
+.x-0 {
+  left: 0vw;
+}
+
+.x-1 {
+  left: 11.25vw;
+}
+
+.x-2 {
+  left: 22.50vw;
+}
+
+.x-3 {
+  left: 33.75vw;
+}
+
+.x-4 {
+  left: 45vw;
+}
+
+.x-5 {
+  left: 56.25vw;
+}
+
+.x-6 {
+  left: 67.50vw;
+}
+
+.x-7 {
+  left: 78.75vw;
+}
+
+.dy-1 {
+  height: 10.75vw;
+}
+
+.dy-2 {
+  height: 22.50vw;
+}
+
+.dy-3 {
+  height: 34.25vw;
+}
+
+.dy-4 {
+  height: 46vw;
+}
+
+.dy-5 {
+  height: 57.75vw;
+}
+
+.dy-6 {
+  height: 69.50vw;
+}
+
+.dy-7 {
+  height: 81.25vw;
+}
+
+.dy-8 {
+  height: 93vw;
+}
+
+.y-0 {
+  top: 0vw;
+}
+
+.y-1 {
+  top: 11.75vw;
+}
+
+.y-2 {
+  top: 23.50vw;
+}
+
+.y-3 {
+  top: 35.25vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Font                                                                                      */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/* @font-face {
+font-family: oxanium;
+src: url("../fonts/oxanium/Oxanium-Medium.ttf");
+} */
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Scrollbar                                                                                 */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2ddcff33;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2ddcff44; 
+}
+
+.scroll-overflow {
+  overflow-y: auto;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//                                                                                              */
+/*//    Components                                                                                */
+/*//                                                                                              */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Body                                                                                      */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.body {
+margin: 0px;
+font-family: oxanium;
+font-size: 0.9vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Background                                                                                */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-background-default {
+background-color: #000000;
+width: 100vw;
+height: 100vh;
+}
+
+.ai-background-danger {
+background-color: #d33939;
+width: 100vw;
+height: 100vh;
+}
+
+.ai-background-warning {
+background-color: #c4a31f;
+width: 100vw;
+height: 100vh;
+}
+
+.ai-background-success {
+background-color: #2e601b;
+width: 100vw;
+height: 100vh;
+}
+
+.ai-background-info {
+background-color: #005b57;
+width: 100vw;
+height: 100vh;
+}
+
+.ai-desktop-area {
+background-color: var(--base-b-0);
+width: 100vw;
+min-height: calc(100vh - 8.954vw);
+top: 8.954vw;
+position:relative;
+overflow-y: scroll;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Connection bar                                                                                 */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-connectionbar {
+background-color: var(--base-b-2);
+width: 100vw;
+height: 2.22vw;
+border-top: 0.074vw solid var(--base-b-4);
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Data bar                                                                                 */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-datasourcebar {
+background-color: var(--base-b-1);
+width: 100vw;
+height: 2.22vw;
+border-top: 0.074vw solid var(--base-dark);
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Buttons                                                                                   */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-button {
+  border: solid 0.1vw;
+  height: calc(100% - 0.6vw);
+  font-family: oxanium;
+  font-size: 0.9vw;
+  line-height: 2;
+  width: calc(100% - 0.6vw);
+  margin: 0.3vw 0.3vw 0.3vw 0.3vw;
+  padding: 0vw;
+}
+
+.ai-button-bottom {
+  border-bottom: solid 0.4vw var(--base-b-6);
+}
+
+.ai-button-top {
+  border-top: solid 0.4vw var(--base-b-6);
+}
+
+.ai-button-connect {
+  border: solid 0.1vw var(--base-b-6);
+  height: 1.6vw;
+  font-size: 1vw;
+  font-family: oxanium;
+  width: 15.5vw;
+  color: var(--base-b-9);
+  line-height: 1em;
+  padding: 0vw 0vw 0vw 0vw;
+}
+
+.ai-button-data {
+  border: solid 0.1vw var(--base-b-6);
+  height: 2.4vw;
+  font-size: 1vw;
+  font-family: oxanium;
+  width: 8vw;
+  color: var(--base-b-9);
+  line-height: 1em;
+  padding: 0vw 0vw 0vw 0vw;
+}
+
+.ai-button-base {
+  background-color: var(--base-dark);
+  border-color: var(--base-bright);
+  color: var(--base-bright);
+}
+
+.ai-button-blue {
+  background-color: var(--blue-dark-dim);
+  border-color: var(--blue-light-dim);
+  color: var(--blue-bright-dim);
+}
+
+.ai-button-aqua {
+  background-color: var(--aqua-dark-dim);
+  border-color: var(--aqua-light-dim);
+  color: var(--aqua-bright-dim);
+}
+
+.ai-button-aqua {
+  background-color: var(--aqua-dark-dim);
+  border-color: var(--aqua-light-dim);
+  color: var(--aqua-bright-dim);
+}
+
+.ai-button-green {
+  background-color: var(--green-dark-dim);
+  border-color: var(--green-light-dim);
+  color: var(--green-bright-dim);
+}
+
+.ai-button-yellow {
+  background-color: var(--yellow-dark-dim);
+  border-color: var(--yellow-light-dim);
+  color: var(--yellow-bright-dim);
+}
+
+.ai-button-orange {
+  background-color: var(--orange-dark-dim);
+  border-color: var(--orange-light-dim);
+  color: var(--orange-bright-dim);
+}
+
+.ai-button-red {
+  background-color: var(--red-dark-dim);
+  border-color: var(--red-light-dim);
+  color: var(--red-bright-dim);
+}
+
+.ai-button-pink {
+  background-color: var(--pink-dark-dim);
+  border-color: var(--pink-light-dim);
+  color: var(--pink-bright-dim);
+}
+
+.ai-button-purple {
+  background-color: var(--purple-dark-dim);
+  border-color: var(--purple-light-dim);
+  color: var(--purple-bright-dim);
+}
+
+.line {
+fill: none;
+stroke: #555;
+stroke-width: 2px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Text area                                                                                 */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-textarea {
+  border: solid 0.1vw;
+  height: calc(100% - 0.3vw);
+  font-family: oxanium;
+  font-size: 0.9vw;
+  line-height: 1;
+  width: calc(100% - 0.3vw);
+  margin: 0.3vw 0.3vw 0.3vw 0.3vw;
+  padding: 0vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Paragraph                                                                                 */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-paragraph {
+  padding: 0.3vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Displays                                                                                   */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.display {
+  width: 100%;
+  height: 100%;
+  font-family: oxanium;
+  position: relative;
+  display: inline;
+}
+
+.displayBackground {
+  width: calc(100% - 0.8vw);
+  height: calc(100% - 0.8vw);
+  stroke-width: 1px;
+  transform: translate(0.4vw, 0.4vw);
+  fill: var(--base-dark);
+}
+
+.displayUnderscore {
+  width: calc(100% - 3.2vw);
+  height: 0.4vw;
+  stroke-width: 0.5px;
+  transform: translate(1.6vw, calc(100% - 0.6vw));
+}
+
+.displayTitle {
+  stroke-width: 0px;
+  text-anchor: middle;
+  transform: translate(50%, calc(25% + 0.4vw));
+}
+
+.displayTitle-row1 {
+  font-size: 0.7vw;
+}
+
+.displayTitle-row2 {
+  font-size: 1.4vw;
+}
+
+.displayTitle-row3 {
+  font-size: 2.1vw;
+}
+
+.displayValue {
+  font-weight: bold;
+  stroke-width: 0px;
+  text-anchor: middle;
+  transform: translate(50%, calc(52.33333333333% + 0.4vw));
+}
+
+.displayValue-row1 {
+  font-size: 1vw;
+}
+
+.displayValue-row2 {
+  font-size: 2vw;
+}
+
+.displayValue-row3 {
+  font-size: 3vw;
+}
+
+.displaySublabel {
+  stroke-width: 0px;
+  text-anchor: middle;
+  transform: translate(50%, calc(67% + 0.4vw));
+}
+
+.displaySublabel-row1 {
+  font-size: 0.5vw;
+}
+
+.displaySublabel-row2 {
+  font-size: 1vw;
+}
+
+.displaySublabel-row3 {
+  font-size: 1.5vw;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Line chart                                                                                */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.linechart {
+  width: calc(100% - 0.8vw);
+  height: calc(100% - 0.8vw);
+  stroke-width: 1px;
+  transform: translate(0.4vw, 0.4vw);
+  position: relative;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Headings                                                                                  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.heading-6 {
+  font-size:1vw;
+  color: #ffffff;
+  height: 1.184vw;
+  background-color: #ffffff05;
+  padding-left: 0.22vw;
+  border-bottom: 0.074vw solid #777777;
+}
+
+p {
+  margin: 0px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Tabs                                                                                      */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-tab-area {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+
+.ai-tab-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 20px;
+  background-color: #ffffff11;
+}
+
+.ai-tab-body {
+  position: relative;
+  float: left;
+  height: calc(100% - 20px);
+  width: 100%;
+}
+
+.ai-tab-page {
+  position: absolute;
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+
+.ai-tab-header-tag {
+  position: relative;
+  float: left;
+  height: 100%;
+  color: #ffffff;
+  background-color: #ffffff33;
+  font-family: oxanium;
+  font-size: 80%;
+}
+
+.ai-tab-header-tag-active {
+  position: relative;
+  float: left;
+  height: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #ffffff;
+  background-color: #ffffff66;
+  font-family: oxanium;
+  font-size: 80%;
+}
+
+.ai-tab-header-tag-right {
+  position: relative;
+  float: right;
+  height: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #ffffff;
+  background-color: #ffffff33;
+  font-family: oxanium;
+  font-size: 80%;
+}
+
+.ai-tab-header-button {
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  border: 0px;
+  width: 20px;
+  color: #ffffff;
+  background-color: #ffffff00
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Navbar                                                                                    */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  position: relative;
+  border-bottom: 1px solid #777777;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Dropdown menu                                                                             */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-dropdown-menu {
+  position: absolute;
+  height: 120px;
+  width: 200px;
+  top: 20px;
+  right: 1%;
+  color: #ffffff;
+  background-color: #444;
+  z-index: 2;
+  font-size: 90%;
+}
+
+.ai-dropdown-item {
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 191px;
+  color: #ffffff;
+}
+
+.ai-dropdown-item:hover {
+  background-color: #555;
+  cursor: pointer;
+}
+
+.ai-dropdown-item-open {
+  border-right: 5px solid #42f45377;
+}

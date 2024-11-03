@@ -2,7 +2,7 @@
 /*//    Buttons                                                                                   */
 /*////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.ai-button {
+.ai-select {
   border: solid 0.1vw;
   height: calc(100% - 0.6vw);
   font-family: oxanium;
@@ -13,15 +13,15 @@
   padding: 0vw;
 }
 
-.ai-button-bottom {
+.ai-select-bottom {
   border-bottom: solid 0.4vw var(--base-b-6);
 }
 
-.ai-button-top {
+.ai-select-top {
   border-top: solid 0.4vw var(--base-b-6);
 }
 
-.ai-button-connect {
+.ai-select-connect {
   border: solid 0.1vw var(--base-b-6);
   height: 1.6vw;
   font-size: 1vw;
@@ -32,7 +32,7 @@
   padding: 0vw 0vw 0vw 0vw;
 }
 
-.ai-button-data {
+.ai-select-data {
   border: solid 0.1vw var(--base-b-6);
   height: 2.4vw;
   font-size: 1vw;
@@ -43,61 +43,61 @@
   padding: 0vw 0vw 0vw 0vw;
 }
 
-.ai-button-base {
+.ai-select-base {
   background-color: var(--base-dark);
   border-color: var(--base-bright);
   color: var(--base-bright);
 }
 
-.ai-button-blue {
+.ai-select-blue {
   background-color: var(--blue-dark-dim);
   border-color: var(--blue-light-dim);
   color: var(--blue-bright-dim);
 }
 
-.ai-button-aqua {
+.ai-select-aqua {
   background-color: var(--aqua-dark-dim);
   border-color: var(--aqua-light-dim);
   color: var(--aqua-bright-dim);
 }
 
-.ai-button-aqua {
+.ai-select-aqua {
   background-color: var(--aqua-dark-dim);
   border-color: var(--aqua-light-dim);
   color: var(--aqua-bright-dim);
 }
 
-.ai-button-green {
+.ai-select-green {
   background-color: var(--green-dark-dim);
   border-color: var(--green-light-dim);
   color: var(--green-bright-dim);
 }
 
-.ai-button-yellow {
+.ai-select-yellow {
   background-color: var(--yellow-dark-dim);
   border-color: var(--yellow-light-dim);
   color: var(--yellow-bright-dim);
 }
 
-.ai-button-orange {
+.ai-select-orange {
   background-color: var(--orange-dark-dim);
   border-color: var(--orange-light-dim);
   color: var(--orange-bright-dim);
 }
 
-.ai-button-red {
+.ai-select-red {
   background-color: var(--red-dark-dim);
   border-color: var(--red-light-dim);
   color: var(--red-bright-dim);
 }
 
-.ai-button-pink {
+.ai-select-pink {
   background-color: var(--pink-dark-dim);
   border-color: var(--pink-light-dim);
   color: var(--pink-bright-dim);
 }
 
-.ai-button-purple {
+.ai-select-purple {
   background-color: var(--purple-dark-dim);
   border-color: var(--purple-light-dim);
   color: var(--purple-bright-dim);

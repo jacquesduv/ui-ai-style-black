@@ -1,0 +1,101 @@
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Tables                                                                                    */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-table {
+  color: #ffffff;
+  width: 100%;
+  font-size: 0.88vw;
+  /*border-collapse: collapse;*/
+}
+
+.ai-cell {
+  font-family: oxanium;
+  font-size: 0.88vw;
+  line-height: 0.88vw;
+  padding-top: 0.22vw;
+  padding-bottom: 0.12vw;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0.074vw;
+}
+
+.ai-cell-blue {
+  background-color: var(--blue-light);
+  border: solid 1px var(--blue-light);
+}
+
+.ai-cell-blue-border {
+  border: solid 1px var(--blue-light);
+  border: solid 1px var(--blue-light);
+}
+
+.ai-cell-blue-dark {
+  background-color: var(--blue-dark);
+  border: solid 1px var(--blue-light);
+}
+
+.ai-cell-blue-text {
+  color: var(--blue-bright);
+}
+
+.ai-cell-blue-bright {
+  background-color: var(--blue-bright);
+  color: var(--blue-dark);
+  border: solid 1px var(--blue-bright);
+}
+
+.ai-cell-aqua {
+  background-color: var(--aqua-light);
+  color: var(--aqua-dark);
+}
+
+.ai-cell-green {
+  background-color: var(--green-light);
+  color: var(--green-dark);
+}
+
+.ai-cell-yellow {
+  background-color: var(--yellow-light);
+  color: var(--yellow-dark);
+}
+
+.ai-cell-orange {
+  background-color: var(--orange-light);
+  color: var(--orange-dark);
+}
+
+.ai-cell-red {
+  background-color: var(--red-light);
+  color: var(--red-dark);
+}
+
+.ai-cell-pink {
+  background-color: var(--pink-light);
+  color: var(--pink-dark);
+}
+
+.ai-cell-purple {
+  background-color: var(--purple-light);
+  color: var(--purple-dark);
+}
+
+.ai-cell-header {
+  background-color: var(--base-bright);
+  color: var(--base-dark);
+}
+
+.ai-cell-base {
+  background-color: var(--base-light);
+}
+
+.ai-cell-base-border {
+  border: solid 1px var(--base-light);
+}
+
+.ai-row-red {
+  background-color: var(--red-light);
+  color: var(--red-dark);
+}
