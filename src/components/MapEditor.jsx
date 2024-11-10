@@ -1,114 +1,197 @@
 // src/components/MapEditor.jsx
 import React, { useState } from "react";
 import { useBlockContext } from "../context/BlockContext";
+import { useGridContext } from "../context/GridContext";
 import { downloadJSON, uploadJSON } from "../utils/fileUtils";
+import {
+  notifySuccess,
+  notifyError,
+  notifyInfo,
+  notifyWarn,
+} from "../utils/ToastNotifications";
 import MapDisplay from "./MapDisplay";
 import ControlForm from "./ControlForm";
 import BlockManager from "./BlockManager";
+import GridOverlay from "./GridOverlay";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const MapEditor = () => {
-    const {
-        blocks,               // Ensure blocks is correctly obtained from context
-        addBlock,
-        updateBlock,
-        deleteBlock,
-        clearBlocks,
-        selectedBlock,
-        setSelectedBlock
-    } = useBlockContext();
+  const { blocks, addBlock, clearBlocks, selectedBlock, setSelectedBlock } =
+    useBlockContext();
 
-    const [defaultLocation, setDefaultLocation] = useState({
-        lat: -27.945563,
-        lng: 25.661019,
-        zoom: 10,
+  const {
+    generateGridCells,
+    setGridCenter,
+    setCellSize,
+    setGridDimensions,
+    rows,
+    cols,
+    cellSize,
+    clearGrid,
+    setSelectedCell,
+    gridCells,
+  } = useGridContext();
+
+  const [isGridVisible, setIsGridVisible] = useState(true);
+
+  // Handle downloading blocks as JSON
+  const handleDownloadBlocks = () => {
+    if (blocks.length > 0) {
+      downloadJSON(blocks, "blocks.json");
+      notifySuccess("Blocks downloaded successfully!");
+    } else {
+      notifyWarn("No blocks to download.");
+    }
+  };
+
+  // Handle uploading blocks from a JSON file
+  const handleUploadBlocks = (event) => {
+    uploadJSON(event, (uploadedBlocks) => {
+      if (uploadedBlocks && uploadedBlocks.length > 0) {
+        uploadedBlocks.forEach((block) => addBlock(block));
+        notifySuccess("Blocks uploaded successfully!");
+      } else {
+        notifyError("Failed to upload blocks.");
+      }
     });
+  };
 
-    const handleLocationChange = (e) => {
-        const { name, value } = e.target;
-        setDefaultLocation((prevLocation) => ({
-            ...prevLocation,
-            [name]: name === "zoom" ? parseInt(value, 10) : parseFloat(value),
-        }));
-    };
+  // Handle clearing all blocks and grid
+  const handleClearAll = () => {
+    if (
+      window.confirm("Are you sure you want to clear all blocks and the grid?")
+    ) {
+      clearBlocks();
+      clearGrid();
+      setSelectedCell(null);
+      setSelectedBlock(null);
+      notifyInfo("All blocks and grid cleared.");
+    }
+  };
 
-    return (
-        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
-                <div style={{ flex: 1, overflow: "hidden" }}>
-                    <MapDisplay
-                        blocks={blocks}
-                        onAddBlock={addBlock}
-                        onSelectBlock={setSelectedBlock}
-                        center={defaultLocation}
-                    />
-                </div>
-                <div style={{ display: "flex", height: "300px", overflow: "hidden" }}>
-                    <div style={{ flex: 1, overflowY: "auto", padding: "10px", borderRight: "1px solid #ccc" }}>
-                        <ControlForm onAddBlock={addBlock} onUpdateBlock={updateBlock} selectedBlock={selectedBlock} />
-                        <div className="mt-3 p-3 border">
-                            <h5>Default Location</h5>
-                            <form className="form-inline">
-                                <label>Latitude</label>
-                                <input
-                                    type="number"
-                                    step="0.00001"
-                                    name="lat"
-                                    value={defaultLocation.lat}
-                                    onChange={handleLocationChange}
-                                    className="form-control mb-2 mr-sm-2"
-                                />
-                                <label>Longitude</label>
-                                <input
-                                    type="number"
-                                    step="0.00001"
-                                    name="lng"
-                                    value={defaultLocation.lng}
-                                    onChange={handleLocationChange}
-                                    className="form-control mb-2 mr-sm-2"
-                                />
-                                <label>Zoom</label>
-                                <input
-                                    type="number"
-                                    name="zoom"
-                                    value={defaultLocation.zoom}
-                                    onChange={handleLocationChange}
-                                    className="form-control mb-2"
-                                />
-                            </form>
-                        </div>
-                        <div className="mt-3">
-                            <button
-                                className="btn btn-success mr-2"
-                                onClick={() => downloadJSON(blocks, "blocks.json")}
-                            >
-                                Download Blocks
-                            </button>
-                            <label className="btn btn-secondary">
-                                Upload Blocks
-                                <input
-                                    type="file"
-                                    onChange={(e) => uploadJSON(e, (data) => setSelectedBlock(data))}
-                                    style={{ display: "none" }}
-                                />
-                            </label>
-                        </div>
-                    </div>
-                    <div style={{ flex: 1, overflowY: "auto", padding: "10px" }}>
-                        <BlockManager
-                            blocks={blocks}             // Pass blocks as a prop to BlockManager
-                            onSelectBlock={setSelectedBlock}
-                            onDeleteBlock={deleteBlock}
-                        />
-                    </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#f1f1f1" }}>
-                    <button className="btn btn-warning" onClick={clearBlocks}>Clear All Blocks</button>
-                    <span><strong>Block Count:</strong> {blocks.length}</span>
-                </div>
-            </div>
-        </div>
-    );
+  // Handle grid update with validation
+  const handleGridUpdate = (e) => {
+    e.preventDefault();
+    const newRows = parseInt(e.target.rows.value, 10);
+    const newCols = parseInt(e.target.cols.value, 10);
+    const newLatOffset = parseFloat(e.target.latOffset.value);
+    const newLngOffset = parseFloat(e.target.lngOffset.value);
+
+    if (newRows > 0 && newCols > 0 && newLatOffset > 0 && newLngOffset > 0) {
+      setGridDimensions({ rows: newRows, cols: newCols });
+      setCellSize({ latOffset: newLatOffset, lngOffset: newLngOffset });
+      generateGridCells();
+      notifySuccess("Grid updated successfully!");
+    } else {
+      notifyError("Invalid grid parameters. Please enter positive values.");
+    }
+  };
+
+  return (
+    <Container fluid className="mt-3">
+      {/* Map and Grid Section */}
+      <Row className="mb-3">
+        <Col style={{ height: "60vh", position: "relative" }}>
+          <MapDisplay />
+          {isGridVisible && <GridOverlay />}
+        </Col>
+      </Row>
+
+      {/* Control Panel */}
+      <Row>
+        <Col md={4}>
+          <ControlForm />
+          <div className="mt-3">
+            <Button
+              variant="success"
+              className="mr-2"
+              onClick={handleDownloadBlocks}
+            >
+              Download Blocks
+            </Button>
+            <label className="btn btn-secondary">
+              Upload Blocks
+              <input
+                type="file"
+                onChange={handleUploadBlocks}
+                style={{ display: "none" }}
+              />
+            </label>
+            <Button variant="danger" className="ml-2" onClick={handleClearAll}>
+              Clear All Blocks & Grid
+            </Button>
+          </div>
+        </Col>
+
+        {/* Block Manager */}
+        <Col md={8}>
+          <BlockManager />
+        </Col>
+      </Row>
+
+      {/* Grid Settings */}
+      <Row className="mt-3">
+        <Col md={6}>
+          <Form onSubmit={handleGridUpdate}>
+            <Form.Group>
+              <Form.Label>Rows</Form.Label>
+              <Form.Control
+                type="number"
+                name="rows"
+                defaultValue={rows}
+                min={1}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Columns</Form.Label>
+              <Form.Control
+                type="number"
+                name="cols"
+                defaultValue={cols}
+                min={1}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Latitude Offset</Form.Label>
+              <Form.Control
+                type="number"
+                name="latOffset"
+                step="0.0001"
+                defaultValue={cellSize.latOffset}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Longitude Offset</Form.Label>
+              <Form.Control
+                type="number"
+                name="lngOffset"
+                step="0.0001"
+                defaultValue={cellSize.lngOffset}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Update Grid
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+
+      {/* Footer Section */}
+      <Row className="mt-3">
+        <Col className="d-flex justify-content-between align-items-center">
+          <Button
+            variant="info"
+            onClick={() => setIsGridVisible(!isGridVisible)}
+          >
+            {isGridVisible ? "Hide Grid" : "Show Grid"}
+          </Button>
+          <span>
+            <strong>Block Count:</strong> {blocks.length}
+          </span>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default MapEditor;
-

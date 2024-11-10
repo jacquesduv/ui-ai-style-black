@@ -1,30 +1,45 @@
 // src/App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavbarComponent from "./components/Navbar";
-import MapEditor from "./components/MapEditor";
-import HelpPage from "./components/HelpPage";
+import { Container } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import SettingsPage from "./pages/SettingsPage";
+import HelpPage from "./pages/HelpPage";
 import { BlockProvider } from "./context/BlockContext";
+import { GridProvider } from "./context/GridContext";
+import "./App.css";
 
 const App = () => {
   return (
     <BlockProvider>
-      <Router>
-        <NavbarComponent />
-        <Routes>
-          <Route path="/" element={<MapEditor />} />
-          <Route path="/help" element={<HelpPage />} />
-          <Route
-            path="/settings"
-            element={
-              <div className="container mt-4">
-                <h2>Settings Page</h2>
-                <p>Settings content coming soon!</p>
-              </div>
-            }
-          />
-        </Routes>
-      </Router>
+      <GridProvider>
+        <Router>
+          <Navbar />
+          <Container fluid className="mt-4">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/help" element={<HelpPage />} />
+              {/* Fallback route for 404 page */}
+              <Route path="*" element={<h3>Page Not Found</h3>} />
+            </Routes>
+          </Container>
+        </Router>
+        {/* Toast Notifications Container */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </GridProvider>
     </BlockProvider>
   );
 };

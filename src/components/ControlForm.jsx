@@ -1,105 +1,182 @@
 // src/components/ControlForm.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { useBlockContext } from "../context/BlockContext";
+import { useGridContext } from "../context/GridContext";
+import {
+  notifySuccess,
+  notifyError,
+  notifyInfo,
+  notifyWarn,
+} from "../utils/ToastNotifications";
 
-const ControlForm = ({ onAddBlock, selectedBlock, onUpdateBlock }) => {
-    // Initialize state for form inputs
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
-    const [targetRate, setTargetRate] = useState('');
+const ControlForm = () => {
+  const {
+    selectedBlock,
+    setSelectedBlock,
+    updateBlock,
+    addBlock,
+    deleteBlock,
+  } = useBlockContext();
 
-    // Populate form with selected block data if available
-    useEffect(() => {
-        if (selectedBlock) {
-            setLat(selectedBlock.lat);
-            setLng(selectedBlock.lng);
-            setTargetRate(selectedBlock.targetRate);
-        }
-    }, [selectedBlock]);
+  const { selectedCell, updateCellStatus, setSelectedCell, clearCell } =
+    useGridContext();
 
-    // Reset form after submission
-    const resetForm = () => {
-        setLat('');
-        setLng('');
-        setTargetRate('');
-    };
+  const [formData, setFormData] = useState({
+    lat: "",
+    lng: "",
+    targetRate: "",
+  });
 
-    // Handle form submission
-    const handleSubmit = (event) => {
-        event.preventDefault();
+  // Load selected block or cell data into the form
+  useEffect(() => {
+    if (selectedBlock) {
+      setFormData({
+        lat: selectedBlock.lat.toFixed(5),
+        lng: selectedBlock.lng.toFixed(5),
+        targetRate: selectedBlock.targetRate,
+      });
+    } else if (selectedCell) {
+      setFormData({
+        lat: selectedCell.center.lat.toFixed(5),
+        lng: selectedCell.center.lng.toFixed(5),
+        targetRate: selectedCell.targetRate || "",
+      });
+    } else {
+      setFormData({ lat: "", lng: "", targetRate: "" });
+    }
+  }, [selectedBlock, selectedCell]);
 
-        // Basic validation
-        const latitude = parseFloat(lat);
-        const longitude = parseFloat(lng);
-        const rate = targetRate === '' ? 1000 : parseInt(targetRate); // Default rate to 1000
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-        if (isNaN(latitude) || latitude < -90 || latitude > 90) {
-            alert('Please enter a valid latitude between -90 and 90.');
-            return;
-        }
-        if (isNaN(longitude) || longitude < -180 || longitude > 180) {
-            alert('Please enter a valid longitude between -180 and 180.');
-            return;
-        }
-        if (isNaN(rate) || rate <= 0) {
-            alert('Please enter a valid target rate.');
-            return;
-        }
+  // Validate the target rate
+  const isValidTargetRate = (rate) => {
+    const parsedRate = parseInt(rate, 10);
+    return !isNaN(parsedRate) && parsedRate > 0;
+  };
 
-        // Call appropriate function based on form state (add or update)
-        if (selectedBlock) {
-            onUpdateBlock({ ...selectedBlock, lat: latitude, lng: longitude, targetRate: rate });
-        } else {
-            onAddBlock({ lat: latitude, lng: longitude, targetRate: rate });
-        }
+  // Handle saving updates for block or cell
+  const handleSave = () => {
+    if (!isValidTargetRate(formData.targetRate)) {
+      notifyError("Invalid target rate. Please enter a positive number.");
+      return;
+    }
 
-        resetForm();
-    };
+    if (selectedBlock) {
+      updateBlock({
+        ...selectedBlock,
+        targetRate: parseInt(formData.targetRate, 10),
+      });
+      notifySuccess("Block updated successfully!");
+    } else if (selectedCell) {
+      updateCellStatus(selectedCell.id, "applied");
+      notifySuccess("Cell updated successfully!");
+    }
+  };
 
-    return (
-        <form onSubmit={handleSubmit} className="p-3 border border-primary rounded">
-            <h5>{selectedBlock ? 'Edit Block' : 'Add New Block'}</h5>
+  // Handle adding a new block
+  const handleAddBlock = () => {
+    if (
+      formData.lat &&
+      formData.lng &&
+      isValidTargetRate(formData.targetRate)
+    ) {
+      addBlock({
+        lat: parseFloat(formData.lat),
+        lng: parseFloat(formData.lng),
+        targetRate: parseInt(formData.targetRate, 10),
+      });
+      notifySuccess("New block added!");
+    } else {
+      notifyError("Please fill in all fields with valid data.");
+    }
+  };
 
-            <div className="form-group mb-2">
-                <label>Latitude</label>
-                <input
-                    type="number"
-                    step="0.00001"
-                    value={lat}
-                    onChange={(e) => setLat(e.target.value)}
-                    className="form-control"
-                    placeholder="Enter latitude"
-                />
-            </div>
+  // Handle deleting a block or clearing a cell
+  const handleDelete = () => {
+    if (selectedBlock) {
+      if (window.confirm("Are you sure you want to delete this block?")) {
+        deleteBlock(selectedBlock.id);
+        setSelectedBlock(null);
+        notifySuccess("Block deleted!");
+      }
+    } else if (selectedCell) {
+      if (window.confirm("Are you sure you want to clear this cell?")) {
+        clearCell(selectedCell.id);
+        setSelectedCell(null);
+        notifySuccess("Cell cleared!");
+      }
+    }
+  };
 
-            <div className="form-group mb-2">
-                <label>Longitude</label>
-                <input
-                    type="number"
-                    step="0.00001"
-                    value={lng}
-                    onChange={(e) => setLng(e.target.value)}
-                    className="form-control"
-                    placeholder="Enter longitude"
-                />
-            </div>
-
-            <div className="form-group mb-2">
-                <label>Target Rate</label>
-                <input
-                    type="number"
-                    value={targetRate}
-                    onChange={(e) => setTargetRate(e.target.value)}
-                    className="form-control"
-                    placeholder="Enter target rate (default: 1000)"
-                />
-            </div>
-
-            <button type="submit" className="btn btn-primary mt-2">
-                {selectedBlock ? 'Update Block' : 'Add Block'}
-            </button>
-        </form>
-    );
+  return (
+    <div className="control-form p-3 border rounded">
+      <h5>Control Panel</h5>
+      <form>
+        <div className="form-group">
+          <label>Latitude</label>
+          <input
+            type="number"
+            name="lat"
+            value={formData.lat}
+            onChange={handleChange}
+            className="form-control"
+            readOnly
+          />
+        </div>
+        <div className="form-group">
+          <label>Longitude</label>
+          <input
+            type="number"
+            name="lng"
+            value={formData.lng}
+            onChange={handleChange}
+            className="form-control"
+            readOnly
+          />
+        </div>
+        <div className="form-group">
+          <label>Target Rate</label>
+          <input
+            type="number"
+            name="targetRate"
+            value={formData.targetRate}
+            onChange={handleChange}
+            className="form-control"
+            placeholder="Enter target rate"
+          />
+        </div>
+        <div className="mt-3">
+          <button
+            type="button"
+            className="btn btn-primary mr-2"
+            onClick={handleSave}
+            disabled={!selectedBlock && !selectedCell}
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            className="btn btn-success mr-2"
+            onClick={handleAddBlock}
+          >
+            Add Block
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+            disabled={!selectedBlock && !selectedCell}
+          >
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default ControlForm;
-

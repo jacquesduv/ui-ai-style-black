@@ -1,48 +1,108 @@
 // src/components/BlockManager.jsx
-import React, { useState } from 'react';
+import React from "react";
+import { useBlockContext } from "../context/BlockContext";
+import { useGridContext } from "../context/GridContext";
+import {
+  notifySuccess,
+  notifyInfo,
+  notifyWarn,
+} from "../utils/ToastNotifications";
+import { Button } from "react-bootstrap";
 
-const BlockManager = ({ blocks = [], onSelectBlock, onDeleteBlock }) => {  // Default to an empty array
-    const [sortBy, setSortBy] = useState('id'); // Default sorting by ID
+const BlockManager = () => {
+  const { blocks, setSelectedBlock, deleteBlock, clearBlocks } =
+    useBlockContext();
+  const { clearCell, setSelectedCell } = useGridContext();
 
-    // Sort blocks based on the selected attribute
-    const sortedBlocks = [...blocks].sort((a, b) => {
-        if (sortBy === 'targetRate') {
-            return b.targetRate - a.targetRate;
-        }
-        return a[sortBy] > b[sortBy] ? 1 : -1;
-    });
+  // Select a block
+  const handleSelectBlock = (block) => {
+    setSelectedBlock(block);
+    setSelectedCell(null); // Deselect any grid cell if a block is selected
+    notifyInfo(`Selected Block ID: ${block.id}`);
+  };
 
-    return (
-        <div className="p-3 border border-secondary rounded">
-            <h5>Block List</h5>
-            <div className="d-flex justify-content-between mb-2">
-                <label>Sort by:</label>
-                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="form-select form-select-sm">
-                    <option value="id">ID</option>
-                    <option value="targetRate">Target Rate</option>
-                    <option value="lat">Latitude</option>
-                    <option value="lng">Longitude</option>
-                </select>
+  // Delete a block
+  const handleDeleteBlock = (blockId) => {
+    deleteBlock(blockId);
+    notifySuccess("Block deleted successfully!");
+  };
+
+  // Clear all blocks
+  const handleClearAllBlocks = () => {
+    if (blocks.length === 0) {
+      notifyWarn("No blocks to clear.");
+      return;
+    }
+    clearBlocks();
+    notifyInfo("All blocks cleared.");
+  };
+
+  // Clear the selected grid cell
+  const handleClearSelectedCell = () => {
+    clearCell(null);
+    setSelectedCell(null);
+    notifyInfo("Selected cell cleared.");
+  };
+
+  return (
+    <div className="block-manager p-3 border rounded">
+      <h5>Block Manager</h5>
+      <div className="block-list">
+        {blocks.length > 0 ? (
+          blocks.map((block) => (
+            <div
+              key={block.id}
+              className="block-item border-bottom p-2 d-flex justify-content-between align-items-center"
+            >
+              <div>
+                <strong>ID:</strong> {block.id} <br />
+                <small>
+                  <strong>Coordinates:</strong> ({block.lat.toFixed(5)},{" "}
+                  {block.lng.toFixed(5)})
+                </small>
+                <br />
+                <strong>Target Rate:</strong> {block.targetRate}
+              </div>
+              <div>
+                <Button
+                  variant="info"
+                  size="sm"
+                  className="mr-2"
+                  onClick={() => handleSelectBlock(block)}
+                >
+                  Select
+                </Button>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDeleteBlock(block.id)}
+                >
+                  Delete
+                </Button>
+              </div>
             </div>
+          ))
+        ) : (
+          <p className="text-muted">
+            No blocks available. Add blocks using the map.
+          </p>
+        )}
+      </div>
 
-            <ul className="list-group">
-                {sortedBlocks.map((block) => (
-                    <li key={block.id} className="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>ID:</strong> {block.id}, <strong>Rate:</strong> {block.targetRate}
-                            <br />
-                            <small>Lat: {block.lat.toFixed(5)}, Lng: {block.lng.toFixed(5)}</small>
-                        </div>
-                        <div>
-                            <button className="btn btn-sm btn-info mr-2" onClick={() => onSelectBlock(block)}>Select</button>
-                            <button className="btn btn-sm btn-danger" onClick={() => onDeleteBlock(block.id)}>Delete</button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+      <div className="mt-3 d-flex justify-content-between">
+        <Button
+          variant="warning"
+          onClick={handleClearAllBlocks}
+          disabled={blocks.length === 0}
+        >
+          Clear All Blocks
+        </Button>
+        <Button variant="secondary" onClick={handleClearSelectedCell}>
+          Clear Selected Cell
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 export default BlockManager;
-

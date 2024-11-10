@@ -1,23 +1,28 @@
 // src/components/Navbar.jsx
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
 
-const NavbarComponent = () => {
-    return (
-        <Navbar bg="primary" variant="dark" expand="lg">
-            <Navbar.Brand as={Link} to="/">Part File Editor</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/settings">Settings</Nav.Link>
-                    <Nav.Link as={Link} to="/help">Help</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-    );
+const AppNavbar = () => {
+  return (
+    <Navbar bg="primary" variant="dark" expand="lg" className="mb-4">
+      <Navbar.Brand href="/">Farming Map Editor</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <NavLink to="/" className="nav-link" end>
+            Home
+          </NavLink>
+          <NavLink to="/settings" className="nav-link">
+            Settings
+          </NavLink>
+          <NavLink to="/help" className="nav-link">
+            Help
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
 
-export default NavbarComponent;
-
+export default AppNavbar;
