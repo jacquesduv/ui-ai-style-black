@@ -10,14 +10,65 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Parcel cache
+.cache/
+
+# Next.js build output
+.next/
+
+# Gatsby files
+.cache/
+public/
+
+# Miscellaneous
+*.pem
+*.log
+
+# Ignore any local configuration files
+*.local
+
+# Ignore coverage reports
+coverage/
+
+# Ignore build directories
+build/
+dist/
+
+# Prevent accidentally committing sensitive files
+#*.env
+
