@@ -36,3 +36,61 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/styles/App.css */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  height: 100%;
+  overflow: hidden; /* Prevent page scroll */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.map-container {
+  flex: 3;
+  position: relative;
+}
+
+.control-panel-container {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-left: 2px solid #d9d9d9;
+  overflow-y: auto;
+}
+
+button {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.toast-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
