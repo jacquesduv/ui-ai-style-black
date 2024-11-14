@@ -126,22 +126,6 @@ const HelpPage = () => {
             </p>
           </Accordion.Body>
         </Accordion.Item>
-
-        {/* Section 6: Contact Support */}
-        <Accordion.Item eventKey="5">
-          <Accordion.Header>Contact Support</Accordion.Header>
-          <Accordion.Body>
-            <p>
-              If you have any questions or need further assistance, please reach
-              out:
-            </p>
-            <ul>
-              <li>Email: support@farmingmapeditor.com</li>
-              <li>Phone: +123-456-7890</li>
-              <li>Or use the live chat feature on our website.</li>
-            </ul>
-          </Accordion.Body>
-        </Accordion.Item>
       </Accordion>
     </div>
   );
