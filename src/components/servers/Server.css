@@ -1,0 +1,42 @@
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//    Server                                                                                   */
+/*////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ai-server {
+  display: grid;
+  grid-auto-columns: 30%;
+  grid-auto-rows: 30%;
+  column-gap: 5%;
+  row-gap: 5%;
+  color: var(--aqua-light-dim);
+}
+
+.ai-server-url {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.ai-server-ip {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.ai-server-port {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.ai-server-prod {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.ai-server-type {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.ai-server-network {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}

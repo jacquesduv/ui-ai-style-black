@@ -6,5 +6,5 @@ interface BackgroundProps {
 }
 
 export const Background: React.FC<BackgroundProps> = ({ children }) => {
-  return <div className="background">{children}</div>;
+  return <div className="ai-background-default">{children}</div>;
 };

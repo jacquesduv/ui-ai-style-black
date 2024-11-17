@@ -1,3 +1,12 @@
 import './fonts.css';
 export * from './components/button';
 export * from './components/backgrounds';
+export * from './components/main';
+export * from './components/navbar';
+export * from './components/dashboard';
+export * from './components/panel';
+export * from './components/select';
+export * from './components/premadepanels/servergrid';
+export * from './components/servers';
+export * from './components/table';
+export * from './components/workspace';

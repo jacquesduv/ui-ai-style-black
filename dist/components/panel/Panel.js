@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from 'react';
+import './Panel.css';
+export const Panel = ({ lbl_top1, lbl_top2, lbl_top3, onClick, className, x1, y1, x2, y2, children }) => {
+    return _jsxs("div", { className: `ai-panel x1-${x1} x2-${x2} y1-${y1} y2-${y2}`, children: [_jsx("div", { className: "ai-panel-head-block" }), _jsxs("div", { className: "ai-panel-head-hor", children: [_jsx("div", { className: "ai-panel-head-hor-lbl-left ai-panel-head-text-white ai-panel-head-base-primary", children: _jsx("strong", { children: lbl_top2 }) }), _jsx("div", { className: "ai-panel-head-hor-lbl-right ai-panel-head-text-white ai-panel-head-base-primary", children: _jsx("strong", { children: lbl_top3 }) })] }), _jsx("div", { className: "ai-panel-head-vert", children: _jsx("div", { className: "ai-panel-head-ver-back", children: _jsx("div", { className: "ai-panel-head-ver-lbl-top-right ai-panel-head-base-primary", children: _jsx("strong", { children: lbl_top1 }) }) }) }), _jsxs("div", { className: "ai-panel-body", children: [_jsx("div", { className: "ai-panel-body-back" }), _jsx("div", { className: "ai-panel-body-front scroll-overflow", children: children })] })] });
+};

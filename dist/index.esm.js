@@ -1,3 +1,7 @@
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
 var jsxRuntime = {exports: {}};
 
 var reactJsxRuntime_production_min = {};
@@ -4177,15 +4181,128 @@ function requireJsxRuntime () {
 
 var jsxRuntimeExports = requireJsxRuntime();
 
-requireReact();
+var reactExports = requireReact();
+var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
 const Button = ({ label, onClick, className }) => {
     return jsxRuntimeExports.jsx("button", { className: `ai-button ${className}`, onClick: onClick, children: label });
 };
 
 const Background = ({ children }) => {
-    return jsxRuntimeExports.jsx("div", { className: "background", children: children });
+    return jsxRuntimeExports.jsx("div", { className: "ai-background-default", children: children });
 };
 
-export { Background, Button };
+const Main = ({ children }) => {
+    return jsxRuntimeExports.jsx("div", { className: "ai-main", children: children });
+};
+
+var DefaultContext = {
+  color: undefined,
+  size: undefined,
+  className: undefined,
+  style: undefined,
+  attr: undefined
+};
+var IconContext = React.createContext && /*#__PURE__*/React.createContext(DefaultContext);
+
+var _excluded = ["attr", "size", "title"];
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } } return target; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function Tree2Element(tree) {
+  return tree && tree.map((node, i) => /*#__PURE__*/React.createElement(node.tag, _objectSpread({
+    key: i
+  }, node.attr), Tree2Element(node.child)));
+}
+function GenIcon(data) {
+  return props => /*#__PURE__*/React.createElement(IconBase, _extends({
+    attr: _objectSpread({}, data.attr)
+  }, props), Tree2Element(data.child));
+}
+function IconBase(props) {
+  var elem = conf => {
+    var {
+        attr,
+        size,
+        title
+      } = props,
+      svgProps = _objectWithoutProperties(props, _excluded);
+    var computedSize = size || conf.size || "1em";
+    var className;
+    if (conf.className) className = conf.className;
+    if (props.className) className = (className ? className + " " : "") + props.className;
+    return /*#__PURE__*/React.createElement("svg", _extends({
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "0"
+    }, conf.attr, attr, svgProps, {
+      className: className,
+      style: _objectSpread(_objectSpread({
+        color: props.color || conf.color
+      }, conf.style), props.style),
+      height: computedSize,
+      width: computedSize,
+      xmlns: "http://www.w3.org/2000/svg"
+    }), title && /*#__PURE__*/React.createElement("title", null, title), props.children);
+  };
+  return IconContext !== undefined ? /*#__PURE__*/React.createElement(IconContext.Consumer, null, conf => elem(conf)) : elem(DefaultContext);
+}
+
+// THIS FILE IS AUTO GENERATED
+function FaUser (props) {
+  return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 448 512"},"child":[{"tag":"path","attr":{"d":"M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"},"child":[]}]})(props);
+}
+
+const Navbar = ({ label, onClick, className, imgLogo, primaryTitle, secondaryTitle }) => {
+    return jsxRuntimeExports.jsxs("div", { className: `ai-navbar ${className}`, onClick: onClick, children: [jsxRuntimeExports.jsxs("div", { className: "ai-navbar-logo-section", children: [jsxRuntimeExports.jsx("img", { className: "ai-navbar-logo-img", src: imgLogo, children: label }), jsxRuntimeExports.jsx("div", { className: "ai-navbar-logo-title-primary", children: primaryTitle }), jsxRuntimeExports.jsx("div", { className: "ai-navbar-logo-title-secondary", children: secondaryTitle })] }), jsxRuntimeExports.jsx("div", { className: "ai-navbar-lightbar", children: jsxRuntimeExports.jsxs("div", { className: "ai-navbar-lightbar-red", children: [jsxRuntimeExports.jsx("span", { className: "ai-navbar-lightbar-icon", children: jsxRuntimeExports.jsx(FaUser, {}) }), jsxRuntimeExports.jsx("span", { className: "ai-navbar-lightbar-text", children: "jacques.duv@gmail.com" })] }) })] });
+};
+
+const Dashboard = ({ children, imgLogo, primaryTitle, secondaryTitle }) => {
+    return jsxRuntimeExports.jsxs(Background, { className: "ai-background-default", children: [jsxRuntimeExports.jsx(Navbar, { imgLogo: imgLogo, primaryTitle: primaryTitle, secondaryTitle: secondaryTitle }), jsxRuntimeExports.jsx(Main, { children: children })] });
+};
+
+const Panel = ({ lbl_top1, lbl_top2, lbl_top3, onClick, className, x1, y1, x2, y2, children }) => {
+    return jsxRuntimeExports.jsxs("div", { className: `ai-panel x1-${x1} x2-${x2} y1-${y1} y2-${y2}`, children: [jsxRuntimeExports.jsx("div", { className: "ai-panel-head-block" }), jsxRuntimeExports.jsxs("div", { className: "ai-panel-head-hor", children: [jsxRuntimeExports.jsx("div", { className: "ai-panel-head-hor-lbl-left ai-panel-head-text-white ai-panel-head-base-primary", children: jsxRuntimeExports.jsx("strong", { children: lbl_top2 }) }), jsxRuntimeExports.jsx("div", { className: "ai-panel-head-hor-lbl-right ai-panel-head-text-white ai-panel-head-base-primary", children: jsxRuntimeExports.jsx("strong", { children: lbl_top3 }) })] }), jsxRuntimeExports.jsx("div", { className: "ai-panel-head-vert", children: jsxRuntimeExports.jsx("div", { className: "ai-panel-head-ver-back", children: jsxRuntimeExports.jsx("div", { className: "ai-panel-head-ver-lbl-top-right ai-panel-head-base-primary", children: jsxRuntimeExports.jsx("strong", { children: lbl_top1 }) }) }) }), jsxRuntimeExports.jsxs("div", { className: "ai-panel-body", children: [jsxRuntimeExports.jsx("div", { className: "ai-panel-body-back" }), jsxRuntimeExports.jsx("div", { className: "ai-panel-body-front scroll-overflow", children: children })] })] });
+};
+
+const Select = ({ label, onClick, onChange, className }) => {
+    return jsxRuntimeExports.jsx("select", { className: `ai-select ${className}`, onClick: onClick, onChange: onChange, children: label });
+};
+
+const Server = ({ url, ipAddress, port, prod, type, network, style, error }) => {
+    if (error)
+        style = { ...style, backgroundColor: 'var(--red-light-dim)' };
+    return jsxRuntimeExports.jsxs("div", { className: "ai-server", style: style, children: [jsxRuntimeExports.jsx("label", { className: "ai-server-url", children: url }), jsxRuntimeExports.jsx("label", { className: "ai-server-ip", children: ipAddress }), jsxRuntimeExports.jsx("label", { className: "ai-server-port", children: port }), jsxRuntimeExports.jsx("label", { className: "ai-server-prod", children: prod }), jsxRuntimeExports.jsx("label", { className: "ai-server-type", children: type }), jsxRuntimeExports.jsx("label", { className: "ai-server-network", children: network })] });
+};
+
+const ServerGrid = ({ lbl_top1, lbl_top2, lbl_top3, x1, x2, y1, y2, items }) => {
+    return jsxRuntimeExports.jsx(Panel, { lbl_top1: lbl_top1, lbl_top2: lbl_top2, lbl_top3: lbl_top3, x1: x1, y1: y1, x2: x2, y2: y2, children: jsxRuntimeExports.jsx("div", { className: "ai-servergrid", style: {
+                gridAutoColumns: `${(100 / Math.floor((x2 - x1) * 1.6) - 1)}%`,
+                gridAutoRows: `${(100 / ((y2 - y1) * 3.0) - 1)}%`
+            }, children: items.map((item, index) => {
+                const column = index % Math.floor((x2 - x1) * 1.6);
+                const row = Math.floor(index / Math.floor((x2 - x1) * 1.6));
+                return (jsxRuntimeExports.jsx(Server, { url: item.url, ipAddress: item.ip, type: item.type, port: item.port, prod: item.level, network: item.network, style: {
+                        gridColumnStart: (column + 1),
+                        gridColumnEnd: (column + 2),
+                        gridRowStart: (row + 1),
+                        gridRowEnd: (row + 2)
+                    }, error: item.error }, `server-${index}`));
+            }) }) });
+};
+
+const Table = ({ children }) => {
+    return jsxRuntimeExports.jsx("table", { className: "ai-table", children: children });
+};
+
+const Workspace = ({ children }) => {
+    return jsxRuntimeExports.jsx("div", { className: "ai-workspace-area", children: children });
+};
+
+export { Background, Button, Dashboard, Main, Navbar, Panel, Select, Server, ServerGrid, Table, Workspace };
 //# sourceMappingURL=index.esm.js.map
